@@ -28,6 +28,21 @@
                     <v-col cols="2">
                         <span>${{ item.variant.variant_price }}</span>
                     </v-col>
+                    <v-col>
+                        <v-btn-group>
+                            <v-btn icon="mdi-minus" @click="decrementItemQty(item)"></v-btn>
+                            <v-text-field
+                                type="number"
+                                hide-spin-buttons
+                                variant="solo"
+                                v-model="item.quantity"
+                                min="0"
+                                flat
+                                style="width: 6ch;"></v-text-field>
+                            <v-btn icon="mdi-plus" @click="item.quantity++"></v-btn>
+                            <v-btn icon="mdi-delete" @click="removeFromCart(item)"></v-btn>
+                        </v-btn-group>
+                    </v-col>
                 </v-row>
             </v-list-item>
             <v-list-item class="d-flex justify-end my-2">
@@ -65,7 +80,19 @@ export default {
         }
     },
     methods: {
-        ...mapActions(useCartStore, ['removeFromCart', 'clearCart'])
+        ...mapActions(useCartStore, ['removeFromCart', 'clearCart', 'decrementItemQty'])
+    },
+    watch: {
+        cartItems: {
+            handler(newItems) {
+                newItems.forEach(item => {
+                    if (item.quantity <= 0) {
+                        this.removeFromCart(item);
+                    }
+                });
+            },
+            deep: true
+        }
     }
 }
 </script>

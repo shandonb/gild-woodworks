@@ -14,10 +14,22 @@ export const useCartStore = defineStore('cart', {
             }
         },
         removeFromCart(product) {
-            // Remove from cart function
+            const index = this.cart.findIndex(item => item.variant.variant_sku === product.variant.variant_sku);
+            if (index !== -1) {
+                this.cart.splice(index, 1);
+            }
         },
         clearCart() {
             this.cart = [];
+        },
+        decrementItemQty(product){
+            product.quantity--;
+            if (product.quantity <= 0) {
+                const index = this.cart.findIndex(item => item.variant.variant_sku === product.variant.variant_sku);
+                if (index !== -1) {
+                    this.cart.splice(index, 1);
+                }
+            }
         }
     },
 });
