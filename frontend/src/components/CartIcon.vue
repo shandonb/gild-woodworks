@@ -47,7 +47,7 @@
             </v-list-item>
             <v-list-item class="d-flex justify-end my-2">
                 <v-btn class="ml-4 my-2" @click="clearCart()">Clear Cart</v-btn>
-                <v-btn class="mx-4">View Cart</v-btn>
+                <v-btn class="mx-4" @click="cartRedirect">View Cart</v-btn>
             </v-list-item>
         </v-list>
         <v-list v-else>
@@ -80,7 +80,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(useCartStore, ['removeFromCart', 'clearCart', 'decrementItemQty'])
+        ...mapActions(useCartStore, ['removeFromCart', 'clearCart', 'decrementItemQty']),
+        cartRedirect() {
+          this.$router.push('/cart')
+        }
     },
     watch: {
         cartItems: {

@@ -42,12 +42,16 @@
             </v-col>
         </v-row>
   </v-container>
-  <v-navigation-drawer v-model="drawer" temporary location="right">
+  <v-navigation-drawer v-model="drawer" temporary location="right" class="pt-2">
         <v-list-item v-for="link in links" :key="link.text">
             <router-link :to="{ name: link.destination }">
                 <v-list-item-title class="nav-items">{{ link.text }}</v-list-item-title>
             </router-link>
         </v-list-item>
+        <v-spacer></v-spacer>
+        <v-divider class="my-2"></v-divider>
+        <v-spacer></v-spacer>
+        <CartPane />
     </v-navigation-drawer>
 </template>
 <script>

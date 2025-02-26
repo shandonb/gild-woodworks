@@ -11,37 +11,58 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: SiteHome
+        component: SiteHome,
+        meta: {
+          title: 'Home'
+        }
     },
     {
         path: '/shop-all',
         name: 'products',
-        component: ShopProducts
+        component: ShopProducts,
+        meta: {
+          title: 'Products'
+        }
     },
     {
         path: '/care-instructions',
         name: 'care',
-        component: CareInstructions
+        component: CareInstructions,
+        meta: {
+          title: 'Product Care'
+        }
     },
     {
         path: '/custom-orders',
         name: 'custom',
         component: CustomOrder,
+        meta: {
+          title: 'Custom Orders'
+        }
     },
     {
         path: '/contact-us',
         name: 'contact',
-        component: ContactPage
+        component: ContactPage,
+        meta: {
+          title: 'Contact Us'
+        }
     },
     {
         path: '/about-us',
         name: 'about',
-        component: AboutUs
+        component: AboutUs,
+        meta: {
+          title: 'About Us'
+        }
     },
     {
         path: '/products/:productId',
         name: 'productDetails',
-        component: ProductDetails
+        component: ProductDetails,
+        meta: {
+          title: 'Product Details'
+        }
     }
 ];
 

@@ -4,6 +4,7 @@ export const useCartStore = defineStore('cart', {
     state: () => ({
         cart: [],
     }),
+    persist: true,
     actions: {
         addToCart(product) {
             const existingItem = this.cart.find(cartItem => cartItem.variant.variant_sku === product.variant.variant_sku);

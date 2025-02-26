@@ -8,6 +8,11 @@
       </v-row>
       <v-row no-gutters>
         <v-col cols="12">
+          <BreadCrumbs />
+        </v-col>
+      </v-row>
+      <v-row no-gutters>
+        <v-col cols="12">
           <router-view></router-view>
         </v-col>
       </v-row>
