@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export const useSearchStore = defineStore('search', {
   state: () => ({
@@ -27,7 +28,7 @@ export const useSearchStore = defineStore('search', {
           types: this.filters.types.join(","),
         });
 
-        const response = await fetch(`/api/products?${params}`, {
+        const response = await fetch(`${API_BASE}/api/products?${params}`, {
           method: 'GET',
         });
         const data = await response.json();
@@ -57,7 +58,7 @@ export const useSearchStore = defineStore('search', {
 
     async fetchMaterials() {
       try {
-        const response = await fetch('/api/filter-materials');
+        const response = await fetch(`${API_BASE}/api/filter-materials`);
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }
@@ -69,7 +70,7 @@ export const useSearchStore = defineStore('search', {
 
     async fetchCategories() {
       try {
-        const response = await fetch('/api/filter-categories');
+        const response = await fetch(`${API_BASE}/api/filter-categories`);
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }

@@ -32,6 +32,7 @@ export default {
             currentPage: 1,
             itemsPerPage: 5,
             totalItems: 0,
+            API_BASE: import.meta.env.VITE_API_BASE
         };
     },
     methods: {
@@ -44,7 +45,7 @@ export default {
                 itemsPerPage: this.itemsPerPage,
                 
             })
-            const response = await axios.get(`/api/products?${params}`);
+            const response = await axios.get(`${this.API_BASE}/api/products?${params}`);
             const rawData = response.data.products;
             this.totalItems = response.data.totalProducts;
 

@@ -5,7 +5,10 @@ const port = process.env.PORT;
 const pool = require('./db');
 const cors = require('cors');
 
-app.use(cors());
+app.use(cors({
+  origin:['https://gild-woodworks.onrender.com'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Quick function to format tags for display

@@ -14,6 +14,7 @@ export default {
         const product = ref(null);
         const loading = ref(false);
         const error = ref(false);
+        const API_BASE = import.meta.env.VITE_API_URL;
 
         const route = useRoute();
 
@@ -21,7 +22,7 @@ export default {
             loading.value = true;
             const productId = route.params.productId
             try {
-                const response = await axios.get(`/api/products/${productId}`);
+                const response = await axios.get(`${API_BASE}/api/products/${productId}`);
                 product.value = response.data;
                 loading.value = false;
             } catch (error) {
