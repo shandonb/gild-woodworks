@@ -27,6 +27,6 @@
     "vite-plugin-vuetify": "^2.0.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": "21.1.0"
   }
 }
