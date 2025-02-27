@@ -227,3 +227,23 @@ GET /api/filter-categories
 ##### Description:  
   
 Returns a list of distinct product categories/types available for filtering.
+
+----
+
+## Project Roadmap
+
+### Missing Content
+
+- [ ] Cart Page
+- [ ] Custom Orders Page
+- [ ] Product Care Page
+- [ ] About Page
+- [ ] Contact Page
+
+### Planned Features
+
+- [ ] Mock/Dummy Checkout
+- [ ] Admin Dashboard
+- [ ] User Accounts/Authentication
+  - [ ] User Wishlists
+ 
