@@ -32,7 +32,7 @@ export default {
             currentPage: 1,
             itemsPerPage: 5,
             totalItems: 0,
-            API_BASE: import.meta.env.VITE_API_BASE
+            API_BASE: import.meta.env.VITE_API_URL
         };
     },
     methods: {
