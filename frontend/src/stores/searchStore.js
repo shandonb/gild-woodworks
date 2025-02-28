@@ -13,12 +13,14 @@ export const useSearchStore = defineStore('search', {
       types: [],
     },
     materials: [],
-    categories: []
+    categories: [],
+    loading: true
   }),
 
   actions: {
     async fetchProducts() {
       this.products = [];
+      this.loading = true;
       try{
         const params = new URLSearchParams({
           page: this.currentPage,
@@ -53,6 +55,8 @@ export const useSearchStore = defineStore('search', {
         this.products = Array.from(productsMap.values());
       } catch(error) {
         console.error(`Failed to fetch products: ${error}`);
+      } finally {
+        this.loading = false;
       }
     },
 

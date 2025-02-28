@@ -39,6 +39,7 @@
             <SearchFilters />
           </v-navigation-drawer>
             <v-col>
+              <template v-if="!searchStore.loading">
                 <v-container class="mx-auto" fluid v-if="searchStore.totalItems > 0">
                     <v-row>
                         <v-col v-for="(product, index) in searchStore.products" :key="index" cols="12" md="6" lg="6" xl="3">
@@ -59,6 +60,16 @@
                         color="warning"
                         ></v-alert>
                 </v-container>
+              </template>
+              <template v-else>
+                <v-container class="mx-auto" fluid>
+                  <v-row>
+                    <v-col v-for="(_, index) in Array.from({ length: searchStore.itemsPerPage })" :key="index" cols="12" md="6" lg="6" xl="3">
+                      <v-skeleton-loader :loading="loading" type="card" :elevation="2" />
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </template>
             </v-col>
         </v-row>
     </v-container>

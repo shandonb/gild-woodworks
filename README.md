@@ -113,13 +113,13 @@ cd gild-woodworks
 	```  
 2. Connect PostgreSQL database  
 	- Create a `.env` file in the backend root directory with connection details  
-		```ini  
-		DB_USER=username  
-		DB_PASSWORD=password  
-		DB_HOST=host  
-		DB_PORT=5432  
-		DB_DATABASE=database  
-		PORT=6543  
+		```sh
+		DB_USER=username  # Username for the PostgreSQL database
+		DB_PASSWORD=password  # Password for the database
+		DB_HOST=host  # Host address for the database (localhost if db is local)
+		DB_PORT=5432  # Database port (5432 by default)
+		DB_DATABASE=database  # Database name
+		PORT=6543  # Node server port
 		```  
 3. Start the backend  
 	```bash  

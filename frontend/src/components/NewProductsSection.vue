@@ -6,7 +6,7 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col>
+            <v-col v-if="!loading">
                 <v-infinite-scroll direction="horizontal" mode="manual">
                     <template v-for="product in products" :key="product.id" :product="product" >
                         <ProductCard :product="product" />
@@ -16,6 +16,11 @@
                     </template>
                 </v-infinite-scroll>
             </v-col>
+            <template v-else>
+              <v-col v-for="(_, index) in Array.from({ length: 5 })" :key="index" cols=12 md="6" lg="4" xl="3">
+                <v-skeleton-loader :loading="loading" type="card" :elevation="2" />
+              </v-col>
+            </template>
         </v-row>
     </v-container>
 </template>
@@ -32,7 +37,8 @@ export default {
             currentPage: 1,
             itemsPerPage: 5,
             totalItems: 0,
-            API_BASE: import.meta.env.VITE_API_URL
+            API_BASE: import.meta.env.VITE_API_URL,
+            loading: false
         };
     },
     methods: {
@@ -40,6 +46,7 @@ export default {
             this.$router.push('/shop-all')
         },
         async fetchProducts() {
+            this.loading = true;
             const params = new URLSearchParams({
                 page: this.currentPage,
                 itemsPerPage: this.itemsPerPage,
@@ -48,6 +55,7 @@ export default {
             const response = await axios.get(`${this.API_BASE}/api/products?${params}`);
             const rawData = response.data.products;
             this.totalItems = response.data.totalProducts;
+            this.loading = false;
 
             const productsMap = new Map();
             rawData.forEach(row => {
