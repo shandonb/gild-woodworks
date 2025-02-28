@@ -65,7 +65,7 @@
                 <v-container class="mx-auto" fluid>
                   <v-row>
                     <v-col v-for="(_, index) in Array.from({ length: searchStore.itemsPerPage })" :key="index" cols="12" md="6" lg="6" xl="3">
-                      <v-skeleton-loader :loading="loading" type="card" :elevation="2" />
+                      <v-skeleton-loader :loading="searchStore.loading" type="card" :elevation="2" />
                     </v-col>
                   </v-row>
                 </v-container>
